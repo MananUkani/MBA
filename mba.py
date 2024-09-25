@@ -105,23 +105,23 @@ def recommend_items(rules):
         if input_item.lower() == 'exit':
             print("Exiting recommendation system.")
             return
-
+        
         # Validate input
         if input_item not in df_encoded.columns:
             print(f"Product '{input_item}' not found in transactions. Please try another product.")
             return
-
+        
         recommendations = get_frequent_items(input_item, rules)
         if not recommendations:
             print(f"No recommendations found for '{input_item}'.")
         else:
             print(f"Recommended items to buy with '{input_item}': {', '.join(recommendations)}")
-
+    
     # Create a text input and button widget
     text_input = widgets.Text(description="Product:")
     button = widgets.Button(description="Get Recommendations")
     button.on_click(on_button_click)
-
+    
     display(text_input, button)
 
 # Define file path (assuming the file is already uploaded at this path)
